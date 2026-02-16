@@ -33,6 +33,13 @@ lake build
 lake exe staticsanitycheck
 ```
 
+## Reproduce (Copy/Paste)
+
+```bash
+lake exe cache get   # opzionale ma raccomandato (mathlib cache)
+lake build
+```
+
 ## Version Pinning (Riproducibilita')
 
 Versioni usate nello sviluppo corrente (pinnate nel repository):
@@ -51,6 +58,10 @@ sono `lean-toolchain` e `lake-manifest.json`.
 
 ## Confini Di Formalizzazione (Espliciti)
 
+- Starting point formale (aggancio esplicito):
+  Eq. (11) del paper, simbolo Lean `K2_general` in
+  `StaticSanityCheck/K2General.lean`.
+
 - Origine di `K2_general`:
   La libreria Lean certifica rigorosamente tutta la catena analitica che
   parte dalla forma coordinata esplicita di `K^2` (`NumK2/DenK2` in
@@ -66,10 +77,9 @@ sono `lean-toolchain` e `lake-manifest.json`.
   Non e' ancora formalizzata l'intera nozione lorentziana di "mutua
   raggiungibilita' causale" con prova di equivalenza generale ai proxy usati.
 
-Formula consigliata per claim nel paper:
-"Lean certifica la catena analitica a partire dalla forma coordinata
-esplicita di `K^2`, e i risultati IR sui domini causali proxy adottati nella
-formalizzazione."
+Claim scope statement (canonical wording):
+
+> The Lean artifact verifies the analytic chain of results starting from the explicit coordinate expression `K2_general` and the proxy domains used in the manuscript; it does not yet certify the derivation of `K2_general` from the full geometric definition `K_{mu nu}K^{mu nu}`, nor the equivalence between the proxy domains and the general Lorentzian causal-domain definition.
 
 ## Cosa Verifica Ogni Script Lean (e Perche')
 
@@ -160,13 +170,13 @@ formalizzazione."
 
 ## Tracciabilita' Rapida Paper -> Lean
 
-| Riferimento paper | Nome Lean (theorem/def) | File |
-|---|---|---|
-| Eq. (9): `X = 1/A - (psi')^2/B` | `X_of`, `deSitterPG_X_eq_one`; variante generale `X_of`, `deSitterPG_X_eq_one`; limite statico `XInvariant`, `XInvariant_static` | `StaticSanityCheck/DeSitterPG.lean`, `StaticSanityCheck/DeSitterPG_FromGeneral.lean`, `StaticSanityCheck/StaticLimit.lean` |
-| Eq. (11): forma generale di `K^2` | `NumK2`, `DenK2`, `K2_general` | `StaticSanityCheck/K2General.lean` |
-| Eq. (19)-(20): limite statico | `XInvariant_static`, `K2Invariant_static`, `static_sanity_check` | `StaticSanityCheck/StaticLimit.lean` |
-| Eq. (23)-(25): Minkowski + media IR | `minkowskiInfraredAverage`, `minkowskiInfraredAverage_eq_const_div`, `minkowskiInfraredAverage_tendsto_zero` | `StaticSanityCheck/MinkowskiLinearTilt.lean` |
-| Eq. (27)-(30): de Sitter PG + selection rule | `dS_A`, `dS_B`, `dS_PG_psi'`, `deSitterPG_X_eq_one`, `deSitterPG_K2`, `deSitterPG_leafwiseAverage_eq`, `deSitter_selection_rule`; cross-check indipendente `deSitterPG_K2_eq_threeH2_from_general`, `deSitter_selection_rule_from_general` | `StaticSanityCheck/DeSitterPG.lean`, `StaticSanityCheck/DeSitterPG_FromGeneral.lean` |
-| Vincolo leafwise astratto (media/limite) | `leafAverage_eq_const_of_forall_eq`, `norm_leafAverage_sub_le_of_forall_norm_sub_le`, `tendsto_leafAverage_of_uniform_on_domains`, `tendsto_leafAverage_of_eventually_const` | `StaticSanityCheck/AbstractAverage.lean` |
-| Claim IR: sorgenti locali soppresse | `tendsto_div_atTop_zero_of_eventuallyEq_const`, `tendsto_volume_real_ball_fin_three_atTop`, `tendsto_ballIntegral_div_volume_real_zero_of_tsupport_subset_closedBall` | `StaticSanityCheck/IRDominance.lean` |
-| Ben-posedness de Sitter (`I0 > 0`, dominio finito, saturazione a `H^-1`) | `I0_pos_of_pos`, `dSDomain_measure_lt_top`, `leafAverage_eq_horizon_of_ge`, `leafAverage_eventuallyEq_horizon`, `leafAverage_tendsto_horizon` | `StaticSanityCheck/DeSitterWellPosed.lean` |
+| Riferimento paper | Nome Lean (theorem/def) | Ipotesi principali | File |
+|---|---|---|---|
+| Eq. (9): `X = 1/A - (psi')^2/B` | `X_of`, `deSitterPG_X_eq_one`; variante generale `X_of`, `deSitterPG_X_eq_one`; limite statico `XInvariant`, `XInvariant_static` | per `deSitterPG_X_eq_one`: `dS_A H r != 0`; per `XInvariant_static`: nessuna ipotesi extra | `StaticSanityCheck/DeSitterPG.lean`, `StaticSanityCheck/DeSitterPG_FromGeneral.lean`, `StaticSanityCheck/StaticLimit.lean` |
+| Eq. (11): forma generale di `K^2` | `NumK2`, `DenK2`, `K2_general` | definizione coordinata (starting point) | `StaticSanityCheck/K2General.lean` |
+| Eq. (19)-(20): limite statico | `XInvariant_static`, `K2Invariant_static`, `static_sanity_check` | per `K2Invariant_static`: `A != 0`, `B != 0`, `r != 0` | `StaticSanityCheck/StaticLimit.lean` |
+| Eq. (23)-(25): Minkowski + media IR | `minkowskiInfraredAverage`, `minkowskiInfraredAverage_eq_const_div`, `minkowskiInfraredAverage_tendsto_zero` | per il limite: `|v| < 1` | `StaticSanityCheck/MinkowskiLinearTilt.lean` |
+| Eq. (27)-(30): de Sitter PG + selection rule | `dS_A`, `dS_B`, `dS_PG_psi'`, `deSitterPG_X_eq_one`, `deSitterPG_K2`, `deSitterPG_leafwiseAverage_eq`, `deSitter_selection_rule`; cross-check indipendente `deSitterPG_K2_eq_threeH2_from_general`, `deSitter_selection_rule_from_general` | ramo diretto: `dS_A H r != 0` dove richiesto; cross-check generale: `dS_A H r != 0`, `r != 0` | `StaticSanityCheck/DeSitterPG.lean`, `StaticSanityCheck/DeSitterPG_FromGeneral.lean` |
+| Vincolo leafwise astratto (media/limite) | `leafAverage_eq_const_of_forall_eq`, `norm_leafAverage_sub_le_of_forall_norm_sub_le`, `tendsto_leafAverage_of_uniform_on_domains`, `tendsto_leafAverage_of_eventually_const` | misurabilita', misura non nulla, finitezza misura ristretta, integrabilita'/uniformita' secondo il lemma | `StaticSanityCheck/AbstractAverage.lean` |
+| Claim IR: sorgenti locali soppresse | `tendsto_div_atTop_zero_of_eventuallyEq_const`, `tendsto_volume_real_ball_fin_three_atTop`, `tendsto_ballIntegral_div_volume_real_zero_of_tsupport_subset_closedBall` | supporto topologico contenuto in una palla finita (sorgente locale) | `StaticSanityCheck/IRDominance.lean` |
+| Ben-posedness de Sitter (`I0 > 0`, dominio finito, saturazione a `H^-1`) | `I0_pos_of_pos`, `dSDomain_measure_lt_top`, `leafAverage_eq_horizon_of_ge`, `leafAverage_eventuallyEq_horizon`, `leafAverage_tendsto_horizon` | `H > 0`, `R > 0` per `I0_pos_of_pos`; soglia di saturazione `H^-1 <= R` | `StaticSanityCheck/DeSitterWellPosed.lean` |

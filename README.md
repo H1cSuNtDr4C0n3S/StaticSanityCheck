@@ -7,8 +7,8 @@
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.18361297.svg)](https://doi.org/10.5281/zenodo.18361297)
 
 Workspace Lean 4 per verifiche formali dei passaggi chiave del paper:
-`Geometric_Vacuum_Selection_from_Constrained_Spacetime_Foliations_v2_causal_domain_resolved.pdf`
-(presente nella root del repository).
+`Geometric_Vacuum_Selection_from_Constrained_Spacetime_Foliations_v2.0.pdf`
+(presente in /paper).
 
 Obiettivo: trasformare i passaggi analitici usati nell'argomento di vacuum
 selection in enunciati Lean con ipotesi esplicite.

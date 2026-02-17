@@ -1,17 +1,26 @@
-# StaticSanityCheck
+# Geometric Vacuum Selection Project
 
-[![CI](https://github.com/H1cSuNtDr4C0n3S/StaticSanityCheck/actions/workflows/lean_action_ci.yml/badge.svg)](https://github.com/H1cSuNtDr4C0n3S/StaticSanityCheck/actions/workflows/lean_action_ci.yml)
-[![Release](https://img.shields.io/github/v/release/H1cSuNtDr4C0n3S/StaticSanityCheck?display_name=tag)](https://github.com/H1cSuNtDr4C0n3S/StaticSanityCheck/releases)
+[![CI](https://github.com/H1cSuNtDr4C0n3S/GeometricVacuumSelection/actions/workflows/lean_action_ci.yml/badge.svg)](https://github.com/H1cSuNtDr4C0n3S/GeometricVacuumSelection/actions/workflows/lean_action_ci.yml)
+[![Release](https://img.shields.io/github/v/release/H1cSuNtDr4C0n3S/GeometricVacuumSelection?display_name=tag)](https://github.com/H1cSuNtDr4C0n3S/GeometricVacuumSelection/releases)
 [![Lean](https://img.shields.io/badge/Lean-v4.27.0-blue)](https://github.com/leanprover/lean4)
 [![mathlib](https://img.shields.io/badge/mathlib-a3a10db0-informational)](https://github.com/leanprover-community/mathlib4/commit/a3a10db0e9d66acbebf76c5e6a135066525ac900)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.18361297.svg)](https://doi.org/10.5281/zenodo.18361297)
 
 Workspace Lean 4 per verifiche formali dei passaggi chiave del paper:
 `Geometric_Vacuum_Selection_from_Constrained_Spacetime_Foliations_v2.0.pdf`
-(presente in /paper).
+(presente in `Paper/`).
 
 Obiettivo: trasformare i passaggi analitici usati nell'argomento di vacuum
 selection in enunciati Lean con ipotesi esplicite.
+
+## Struttura Repository
+
+- `Paper/`: paper LaTeX (`main.tex`), PDF, figure e materiale computazionale
+  (notebook/script usati per i calcoli simbolici e numerici).
+- `StaticSanityCheck/` + file Lean in root (`Main.lean`,
+  `StaticSanityCheck.lean`, `lakefile.toml`, `lean-toolchain`,
+  `lake-manifest.json`): artifact Lean 4 per la formalizzazione/sanity-check.
+- `.github/workflows/lean_action_ci.yml`: CI che esegue `lake build`.
 
 ## Contesto fisico minimo
 

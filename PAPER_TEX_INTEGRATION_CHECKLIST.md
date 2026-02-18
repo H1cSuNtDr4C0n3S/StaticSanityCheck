@@ -36,5 +36,5 @@ Date: 2026-02-18
 - [x] Quick textual consistency pass on terminology across sections.
 
 ## Phase 6 - Final Sync
-- [ ] Commit checklist + tex/compile-related changes.
-- [ ] Push final paper update to GitHub.
+- [x] Commit checklist + tex/compile-related changes.
+- [x] Push final paper update to GitHub.

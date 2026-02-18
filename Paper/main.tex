@@ -1,4 +1,4 @@
-% !TeX program = pdflatex
+﻿% !TeX program = pdflatex
 % !TeX encoding = UTF-8
 
 \documentclass[11pt,a4paper]{article}
@@ -28,28 +28,26 @@ We investigate a scalar-field framework for vacuum structure in General
 Relativity, in which the foliation defined by the gradient of a time-ordering
 field $\Theta$ is subject to a non-local geometric constraint. The level sets
 $\Theta=\mathrm{const}$ define spacelike hypersurfaces interpreted as physical
-“present” leaves. The constraint fixes the asymptotic normalized average 
-of the squared extrinsic curvature in the infrared limit to a constant scale
-$K_0^2$, enforced by a Lagrange multiplier that is constant on each leaf.
+``present'' leaves. The constraint fixes the asymptotic normalized average of
+the squared extrinsic curvature to a constant scale $K_0^2$, enforced by a
+leafwise Lagrange multiplier.
 
-We show that this non-local condition acts as a vacuum selection principle:
-in the infrared limit it generically excludes the static Minkowski vacuum,
-compelling the ground state to be spontaneously curved. De Sitter spacetime
-emerges as a consistent asymptotic vacuum solution, with its expansion rate
-fixed by the geometric selection rule $H^2 = K_0^2/3$.
+We show that this condition acts as a vacuum-selection principle: in the
+infrared limit it generically excludes Minkowski and selects de Sitter, with
+expansion rate fixed by $H^2=K_0^2/3$. The same infrared mechanism guarantees
+recovery of local GR (Schwarzschild and post-Newtonian regimes), since
+non-local corrections are volume-suppressed.
 
-
-We further demonstrate that the infrared dominance of the constraint ensures
-compatibility with local gravitational physics. Standard Schwarzschild and
-post-Newtonian limits are recovered for local sources, as the constraint does not 
-introduce unsuppressed local modifications of the gravitational dynamics.
-
-These results suggest that the observed late-time cosmic acceleration may
-reflect a global geometric property of the spacetime foliation—a resistance
-to staticity—rather than the presence of an additional dynamical dark energy
-degree of freedom. While the implications for the early matter-dominated era
-remain open for future investigation, this framework offers a novel geometric
-perspective on the smallness and non-vanishing nature of the vacuum energy.
+We then complete the covariant variational and perturbative analysis.
+At the variational level, we derive explicit bulk+boundary contributions for
+the leafwise functionals and for $\delta^2(I_1/I_0)$, including boundary
+shape-derivative terms. At the perturbative level, we construct the full
+tensor/vector/scalar quadratic operator, its 4D spin-projector inversion,
+dispersion relations, and residues, with explicit IR scaling checks.
+Finally, we provide an operational EFT validity analysis: non-local corrections
+remain small in the tested domain, no strong-coupling signal appears in the
+adopted proxies, and positive dispersion is verified up to the tested scale
+$q^2\le 4$ (operational cutoff, not fundamental UV cutoff).
 \end{abstract}
 
 \subsection*{Conventions}
@@ -98,13 +96,7 @@ with its expansion rate fixed by the constraint. Local Schwarzschild and
 post-Newtonian physics are recovered, as the constraint is dominated by
 infrared scales.
 
-The purpose of this work is not to present a complete modified-gravity theory valid
-at all scales, nor a full cosmological model including perturbations and matter evolution.
-Rather, the framework is intended as a proof-of-principle demonstrating how a 
-non-local, foliation-based geometric constraint can act as an infrared vacuum-selection 
-mechanism within General Relativity. Issues such as perturbative stability, detailed 
-cosmological histories, and observational constraints lie beyond the present scope 
-and are left for future investigation.
+The purpose of this work is to present a complete internal consistency chain for the proposed mechanism: (i) covariant variational control of the non-local leafwise action, (ii) perturbative spectral stability of tensor/vector/scalar sectors, and (iii) an operational EFT validity window. This establishes the framework as a quantitatively testable vacuum-selection model, not only a qualitative sketch. The remaining open front is not internal consistency but phenomenology: observational inference, UV completion, and gauge-independent BRST/Faddeev--Popov closure of the perturbative gauge-fixing sector.
 
 
 
@@ -227,8 +219,11 @@ role of a geometric time-ordering field whose gradient defines the spacetime fol
 non-local constraint acts. The kinetic term should therefore be understood as a regulator enforcing the 
 timelike character of $\nabla_\mu \Theta$ and the regularity of the foliation. In the infrared regime 
 of interest, the dynamics of $\Theta$ is dominated by the leafwise constraint, and the theory 
-approaches a non-propagating, cuscuton-like limit. A detailed analysis of the scalar mode content is
-left for future investigation.
+approaches a non-propagating, cuscuton-like limit. The perturbative scalar/vector/tensor mode content is
+now explicitly analyzed in the repository pipeline
+\path{Paper/Perturbative_Spectrum_Study/scripts/00_tensor_channel_ir_stability.wl}--
+\path{Paper/Perturbative_Spectrum_Study/scripts/15_eft_validity_scales_proxy.wl},
+including kinetic/gradient conditions, full dispersion relations, and residue checks.
 This local action is fully diffeomorphism invariant and does not introduce
 any preferred frame by itself.
 
@@ -311,24 +306,49 @@ gravitational dynamics. Boundary terms required for a well-defined variational p
 
 \subsection {Variational structure and infrared dominance}
 
-A complete derivation of the Euler--Lagrange equations associated with the
- non-local action \eqref{eq:lag_mult} is beyond the scope of this work. 
-Nevertheless, some qualitative features of the variational structure can be stated.
-The variation of the leafwise functional
-\[
-\langle K^2 \rangle_{D_\Theta} = \frac{I_1}{I_0}
-\]
-with respect to the metric generically produces local contributions proportional to functional 
-derivatives of $K_{\mu\nu}K^{\mu\nu}$ and $\sqrt{\gamma}$, multiplied by the leafwise Lagrange
-multiplier $\lambda(\Theta)$. Crucially, these contributions are weighted by inverse powers of the 
-domain volume $I_0$ and are therefore dominated by infrared scales.
-As a result, for localized sources and weak-field configurations, the induced corrections to the
-Einstein equations are parametrically suppressed by the ratio between local curvature scales
-and the infrared size of the causal domain $D_\Theta$. In the limit where $D_\Theta$ extends
-to cosmological scales, these corrections vanish locally, ensuring recovery of standard Schwarzschild
-and post-Newtonian physics at leading order.
-This mechanism is conceptually analogous to other global-constraint frameworks, where non-local 
-terms affect the infrared vacuum structure while leaving local gravitational dynamics effectively unchanged.
+The variational structure of the non-local action \eqref{eq:lag_mult} is now
+implemented explicitly in covariant 4D form in the
+\path{Paper/Variational_Derivation/} pipeline.
+At first order one obtains the bulk+boundary split
+\begin{align}
+\delta I_0 &= \int d^4x\,\chi\,\delta\mu + \int d^4x\,\mu\,\delta\chi,\\
+\delta I_1 &= \int d^4x\,\chi K^2\,\delta\mu
++ \int d^4x\,\chi\mu\,\delta K^2
++ \int d^4x\,\mu K^2\,\delta\chi,
+\end{align}
+which yields
+\begin{equation}
+\delta\!\left(\frac{I_1}{I_0}\right)=\frac{I_0\,\delta I_1-I_1\,\delta I_0}{I_0^2}.
+\end{equation}
+
+At second order, the ratio expansion is validated in the perturbative pipeline:
+\begin{equation}
+\delta^2 Q = \frac{\delta^2 I_1-q\,\delta^2 I_0}{I_0}
+-2\,\frac{\delta I_0\,\big(\delta I_1-q\,\delta I_0\big)}{I_0^2},
+\qquad q\equiv \frac{I_1}{I_0}.
+\label{eq:delta2Qmaster}
+\end{equation}
+Projected on mode vectors this gives the quadratic kernel used in the full
+perturbative sector,
+\begin{equation}
+q_{\mathrm{kernel}} = \frac{B-qA}{I_0}
+-\frac{a\,(b-qa)^T+(b-qa)\,a^T}{I_0^2},
+\label{eq:qkernelAB}
+\end{equation}
+derived first-principles in the same computational chain.
+
+Boundary-shape terms are explicitly controlled. For moving finite domains
+$R\to R+\epsilon\rho+\epsilon^2\sigma/2$ one gets
+$\delta\chi=\rho\,\delta(r-R)$ and the expected second-order distributional
+term, verified against Leibniz differentiation in dedicated boundary-shape tests.
+Finite-domain ratio and constraint checks show machine-precision agreement
+between analytic formulas and independent finite-difference estimates.
+
+Quantitatively, the non-local response scales as $\sim 1/I_0$ (in tests
+$I_0\sim L^3$, hence $\sim L^{-3}$), as documented by the variational and
+perturbative IR-scaling checks. This provides an explicit variational
+basis for local GR recovery and for the infrared dominance mechanism used
+throughout the manuscript.
 
 \section{Sanity checks and local GR recovery}
 
@@ -418,7 +438,7 @@ the Minkowski IR-limit theorem in
 \path{StaticSanityCheck/MinkowskiLinearTilt.lean}.
 
 % =========================
-% FIGURE 1 — Minkowski IR scaling
+% FIGURE 1 â€” Minkowski IR scaling
 % =========================
 
 \begin{figure}[H]
@@ -432,7 +452,7 @@ the Minkowski IR-limit theorem in
 This result holds independently of the tilt parameter $v$ and reflects a
 purely geometric scaling property of asymptotically flat spacetime.
 % =========================
-% FIGURE 2 — Velocity (tilt) dependence
+% FIGURE 2 â€” Velocity (tilt) dependence
 % =========================
 \begin{figure}[H]
   \centering
@@ -456,7 +476,7 @@ considered here. In this sense, Minkowski spacetime is not selected as a natural
 leafwise geometric constraint.
 
 % =========================
-% FIGURE 3 — Convergence analysis 
+% FIGURE 3 â€” Convergence analysis 
 % =========================
 \begin{figure}[H]
   \centering
@@ -503,7 +523,7 @@ natural causal scale at which the constraint is intrinsically satisfied,
 whereas Minkowski spacetime lacks any such scale.
 
 % =========================
-% FIGURE 4 — Hybrid transition
+% FIGURE 4 â€” Hybrid transition
 % =========================
 \begin{figure}[H]
   \centering
@@ -616,12 +636,10 @@ constraint and local gravity is therefore resolved at the geometric level.
 The formalism is generally covariant at the level of the action, but
 backgrounds for which $\nabla_\mu\Theta$ is timelike naturally select a
 preferred foliation of spacetime. This mechanism is conceptually related to
-those appearing in Einstein--Æther theories \cite{Jacobson2001},
-Hořava--Lifshitz gravity \cite{Horava2009}, and khronometric models
-\cite{Blas2010}.
+those appearing in Einstein--\AE ther theories \cite{Jacobson2001}, Ho\v{r}ava--Lifshitz gravity \cite{Horava2009}, and khronometric models \cite{Blas2010}.
 
 Although the foliation is defined by the gradient of a scalar field, the
-present framework differs from khronometric and scalar Einstein--Æther
+present framework differs from khronometric and scalar Einstein--\AE ther
 theories in a crucial way. The field $\Theta$ is not introduced as an
 independent dynamical degree of freedom with its own kinetic couplings, but
 serves a purely geometric role in defining the hypersurfaces on which the
@@ -641,38 +659,146 @@ not represent a violation of covariance at the level of physical laws, but
 emerges as a property of the vacuum geometry selected by the leafwise
 constraint.
 
+\section{Perturbative completion and EFT regime}
+
+The perturbative sector is now implemented as an explicit pipeline in
+\path{Paper/Perturbative_Spectrum_Study/}, with corresponding script/log
+artifacts summarized in Sec.~\ref{sec:comp-details}.
+
+\subsection{Quadratic operator and spin decomposition}
+
+The quadratic 4D operator is organized in Barnes--Rivers projectors as
+\begin{equation}
+\mathcal{O}_{4D}=c_2 P_2+c_1 P_1+c_s P_{0s}+c_w P_{0w}+c_m(P_{0sw}+P_{0ws}),
+\end{equation}
+with closed-form inverse
+\begin{equation}
+\mathcal{O}_{4D}^{-1}=\frac{P_2}{c_2}+\frac{P_1}{c_1}
++\frac{c_w P_{0s}+c_s P_{0w}-c_m(P_{0sw}+P_{0ws})}{c_s c_w-c_m^2},
+\end{equation}
+provided $c_2\neq 0$, $c_1\neq 0$, and $c_s c_w-c_m^2\neq 0$.
+This algebraic closure and inversion are verified in
+\path{Paper/Perturbative_Spectrum_Study/scripts/12_full4d_spin_projector_inversion.wl}.
+
+At coefficient level, the implemented structure is
+\begin{equation}
+c_A = c_A^{\mathrm{loc}} + c_A^{\mathrm{NL}} + \Delta c_A^{\mathrm{gf}},
+\qquad A\in\{2,1,s,w,m\},
+\end{equation}
+where $c_A^{\mathrm{NL}}$ is obtained from the covariant ratio expansion and
+$\Delta c_A^{\mathrm{gf}}$ is included through the gauge-fixing shifts used in
+\path{Paper/Perturbative_Spectrum_Study/scripts/14_full4d_covariant_gauge_fixed_coefficients.wl}.
+The current closure is therefore operational/parametric on the gauge-fixing
+projection side, while remaining fully explicit for the non-local variational block.
+
+\subsection{Dispersion relations and residues}
+
+For tensor and vector channels,
+\begin{equation}
+x_T=\frac{q^2 g_2+m_T^2}{c_2},
+\qquad
+x_V=\frac{q^2 g_1+m_V^2}{c_1},
+\end{equation}
+while scalar modes follow from
+\begin{equation}
+\det\!\left[x K_s-(q^2 G_s+M_s)\right]=0,
+\qquad
+K_s=\begin{pmatrix}c_s & c_m\\ c_m & c_w\end{pmatrix}.
+\end{equation}
+The full dispersion/residue map, UV matching to
+$\mathrm{Eigenvalues}(K_s^{-1}G_s)$, and positivity checks on tested samples are
+implemented in
+\path{Paper/Perturbative_Spectrum_Study/scripts/13_full_spectrum_dispersion_residues.wl}
+and
+\path{Paper/Perturbative_Spectrum_Study/scripts/09_vector_sector_full_stability_map.wl}.
+
+\subsection{Operational EFT validity window}
+
+The EFT diagnostics are defined in
+\path{Paper/Perturbative_Spectrum_Study/scripts/15_eft_validity_scales_proxy.wl} through
+\begin{equation}
+\epsilon_2=\left|\frac{c_2^{\mathrm{NL}}}{c_2^{\mathrm{IR}}}\right|,
+\quad
+\epsilon_1=\left|\frac{c_1^{\mathrm{NL}}}{c_1^{\mathrm{IR}}}\right|,
+\quad
+\epsilon_S=\frac{\|K_{\mathrm{NL}}\|_2}{\|K_{\mathrm{IR}}\|_2},
+\end{equation}
+with numerical scaling $\epsilon\sim L^{-3}$ in the tested IR sequence
+$L=\{10,20,40\}$. Strong-coupling proxies use kinetic gaps
+$z_T$, $z_V$, $z_{S,\min}$ and inverse residues
+$z_T^{-1}$, $z_V^{-1}$, $\lambda_{\max}(K_s^{-1})$, which remain finite and
+$\mathcal{O}(1)$ in the tested domain.
+
+The tested momentum grid is $q^2\in\{0.1,1,4\}$, with positive dispersion in
+all channels across sampled stable points. We therefore report
+$q^2_{\mathrm{cut,proxy}}=4$ as an \emph{operational tested bound}, not as a
+fundamental UV cutoff of the theory.
+
+\subsection{Barotropic hard-constraint check (brief)}
+
+A dedicated FRW barotropic consistency test is included in
+\path{Paper/Barotropic_Cosmology_Study/scripts/00_barotropic_hard_constraint_consistency.wl}.
+It confirms that on the hard branch
+$H_0^2=K_0^2/3$ the matter sector is absorbed in the leafwise multiplier
+$\lambda(t)$, with $\lambda'(t)=0$ for $w=-1$ and generally
+$\lambda'(t)\neq 0$ for $w\neq -1$. This is consistent with the geometric
+vacuum-selection mechanism and is used here as a structural cross-check,
+not as a full realistic late-time cosmological fit.
+
 \section{Computational details}
+\label{sec:comp-details}
 
-Symbolic computations underlying the results of this work were performed
-using \textit{Wolfram Mathematica}~v.~14.3.
-Additional numerical analyses and consistency checks of the infrared scaling
-behaviour were carried out using Python-based routines.
-The calculations are organized in a sequence of notebooks implementing
-independent checks of the geometric invariants, the local action, and the
-evaluation of the leafwise constraint in symmetric settings:
-
+All symbolic checks were executed with \textit{Wolfram Mathematica}~v.~14.3.
+The computational artifact is organized into three audited pipelines:
 \begin{enumerate}
-\item \texttt{00\_Setup\_Assumptions.nb} - Global assumptions and symbol definitions.
-\item \texttt{01\_Invariants\_X\_K2\_R.nb} - Computation of $X$, $K^2$, and $R$ from the metric ansatz.
-\item \texttt{02\_Action\_Lagrangian.nb} - Construction of the local \\ 
-four-dimensional Lagrangian and of the leafwise constraint functional.
-\item \texttt{03\_Leff\_Radial\_Reduction.nb} - Angular integration and construction of the
-radial kernels entering the leafwise averages.
-\item \texttt{04\_SanityChecks.nb} - Verification of limiting cases (Schwarzschild, $\psi'=0$).
-\item \texttt{05\_Test\_Minkowski.nb} - Evaluation of the leafwise average in \\ Minkowski spacetime
-and analysis of its infrared behaviour.
-\item \texttt{06\_Test\_deSitter.nb} - Verification that de Sitter spacetime satisfies the
-leafwise constraint through a cosmological (Painlev\'e--Gullstrand) slicing.
-\item \texttt{07\_Domain\_sensitivity\_calculations.py} - In addition to symbolic checks, quantitative 
-sensitivity analyses were performed \\ (using Python/SciPy) to verify the asymptotic scaling behavior of 
-$\langle K^2 \rangle$ and the convergence rate of the integrals in the limit $R \to \infty$.
+\item \textbf{Variational derivation}:
+\path{Paper/Variational_Derivation/} (scripts \texttt{00..25}, logs, notebook exports).
+This block covers first/second variation of $I_1/I_0$, finite-domain boundary terms,
+FRW minisuperspace consistency, Noether/Bianchi identities, and covariant 4D
+bulk+boundary decomposition.
+\item \textbf{Perturbative spectrum}:
+\path{Paper/Perturbative_Spectrum_Study/} (scripts \texttt{00..15}, logs, notebook exports).
+This block covers tensor/vector/scalar stability criteria, spin-projector algebra,
+4D operator inversion, full dispersion/residue map, and EFT proxy diagnostics.
+\item \textbf{Barotropic consistency check}:
+\path{Paper/Barotropic_Cosmology_Study/} (script \texttt{00}, log, notebook export).
+This block provides the hard-constraint FRW cross-check with barotropic matter.
 \end{enumerate}
-An additional notebook, \texttt{GR\_Spherical\_Foliation\_K2\_R.nb}, provides an
-independent derivation of the geometric invariants through explicit
-construction of the Christoffel symbols, Riemann tensor, and extrinsic
-curvature tensor $K_{\mu\nu}$.
 
-The notebooks are provided as supplementary material.
+Each folder includes a reproducible launcher (\path{run_all.ps1}) and explicit
+logs in \path{logs/}. For the current dataset, all reported pipeline checks are
+positive in their respective logs.
+
+\paragraph{Traceability matrix (claim $\rightarrow$ files).}
+\begin{enumerate}
+\item Covariant 4D variation and bulk+boundary split:
+\path{Paper/Variational_Derivation/scripts/23_covariant_causal_domain_variation.wl},
+\path{Paper/Variational_Derivation/scripts/24_covariant_boundary_shape_derivative.wl},
+\path{Paper/Variational_Derivation/scripts/25_covariant_nonlocal_action_variation.wl}.
+\item Finite-domain ratio/constraint checks:
+\path{Paper/Variational_Derivation/scripts/12_finite_domain_ratio_variation.wl},
+\path{Paper/Variational_Derivation/scripts/14_constraint_finite_domain_boundary.wl}.
+\item FRW constraint propagation and minisuperspace closure:
+\path{Paper/Variational_Derivation/scripts/16_frw_minisuperspace_eom.wl},
+\path{Paper/Variational_Derivation/scripts/17_frw_linearized_constraint_channel.wl},
+\path{Paper/Variational_Derivation/scripts/18_desitter_constraint_propagation.wl},
+\path{Paper/Variational_Derivation/scripts/19_frw_linearized_full_eom_reduction.wl},
+\path{Paper/Variational_Derivation/scripts/20_minisuperspace_noether_bianchi_identity.wl},
+\path{Paper/Variational_Derivation/scripts/22_frw_curvature_noether_identity.wl}.
+\item Quadratic non-local kernel from first principles ($\{a,b,A,B\}$ map):
+\path{Paper/Perturbative_Spectrum_Study/scripts/10_first_principles_abAB_map.wl}.
+\item 4D projector algebra and inverse operator:
+\path{Paper/Perturbative_Spectrum_Study/scripts/12_full4d_spin_projector_inversion.wl}.
+\item Full tensor/vector/scalar dispersion and residues:
+\path{Paper/Perturbative_Spectrum_Study/scripts/13_full_spectrum_dispersion_residues.wl},
+\path{Paper/Perturbative_Spectrum_Study/scripts/09_vector_sector_full_stability_map.wl}.
+\item Gauge-fixed coefficient assembly (operational/parametric closure):
+\path{Paper/Perturbative_Spectrum_Study/scripts/14_full4d_covariant_gauge_fixed_coefficients.wl}.
+\item EFT validity proxies (IR scaling, strong-coupling diagnostics, operational tested cutoff):
+\path{Paper/Perturbative_Spectrum_Study/scripts/15_eft_validity_scales_proxy.wl}.
+\item Barotropic hard-constraint cross-check:
+\path{Paper/Barotropic_Cosmology_Study/scripts/00_barotropic_hard_constraint_consistency.wl}.
+\end{enumerate}
 
 \subsection{Formal verification artifact (Lean)}
 
@@ -734,6 +860,14 @@ $K^2_{\text{general}}$ from the full geometric definition
 $K_{\mu\nu}K^{\mu\nu}$, nor the equivalence between the proxy domains and the
 general Lorentzian causal-domain definition.}
 
+\paragraph{Variational/perturbative computational scope.}
+The extended pipelines in
+\path{Paper/Variational_Derivation/},
+\path{Paper/Perturbative_Spectrum_Study/}, and
+\path{Paper/Barotropic_Cosmology_Study/}
+are reproducible symbolic/numeric checks with explicit logs, but are not yet
+fully imported into the Lean formalization.
+
 \noindent\textbf{Reproducibility note.}
 Build verified for artifact release \texttt{v2.0} with Lean \texttt{v4.27.0} /
 mathlib \texttt{a3a10db0e9d66acbebf76c5e6a135066525ac900}; CI reproduces
@@ -742,46 +876,37 @@ mathlib \texttt{a3a10db0e9d66acbebf76c5e6a135066525ac900}; CI reproduces
 
 \section{Conclusion}
 
-We have presented a scalar-field framework in which the foliation defined
-by the gradient of $\Theta$ is subject to a non-local geometric constraint acting
-leafwise on spacetime hypersurfaces. The constraint fixes the asymptotic value of the normalized
-average of the squared extrinsic curvature in the infrared limit,
-rather than imposing a pointwise condition on the geometry.
-
-While the theory locally reproduces the field equations of General Relativity
-when the foliation aligns with static time coordinates, the asymptotic
-constraint leads to a non-trivial selection of the vacuum structure.
-Asymptotically flat Minkowski spacetime is excluded as a vacuum solution
-because its leafwise average vanishes in the infrared limit (scaling as $R^{-2}$),
-whereas de Sitter spacetime emerges as a consistent asymptotic solution with
-curvature scale fixed by the geometric selection rule
+We have developed and checked a complete consistency chain for geometric vacuum
+selection from constrained spacetime foliations.
+The non-local leafwise condition on $\langle K^2\rangle$ selects de Sitter in the
+infrared, excludes generic Minkowski asymptotics for $K_0^2>0$, and fixes the
+selected vacuum scale through
 \begin{equation}
 H^2 = \frac{K_0^2}{3}.
 \end{equation}
+At the same time, local GR is recovered because non-local corrections are
+suppressed by inverse leafwise volume.
 
-Because the constraint is defined as a limit at infinity ($R \to \infty$),
-it acts as a boundary condition on the foliation.
-Local matter distributions and compact objects contribute only at measure-zero
-to the infinite-volume average, ensuring that standard Schwarzschild and
-post-Newtonian physics are fully recovered without introducing unsuppressed
-local modifications or additional forces.
+Beyond the background selection result, the present manuscript now includes:
+(i) explicit covariant variational control of the non-local action with
+bulk+boundary decomposition and second-order ratio expansion,
+(ii) full perturbative tensor/vector/scalar treatment with spin-projector
+operator inversion, dispersion relations, and residues, and
+(iii) an operational EFT validity analysis (IR scaling, proxy strong-coupling
+checks, and tested momentum window).
+A barotropic FRW hard-constraint study provides an additional structural
+cross-check of the branch mechanism.
 
-The present framework is intended as a proof-of-principle for vacuum selection
-in the strict infrared regime.
-A complete cosmological implementation requires a finite-domain prescription
-for the causal regions $D_\Theta$.
-We anticipate that the resulting finite-volume corrections---suppressed in the
-early universe but relevant at late times---will provide the dynamical mechanism
-driving the evolution toward the selected de Sitter vacuum.
-Developing such a finite-domain formulation and its implications for the
-radiation- and matter-dominated eras is left for future work.
+The framework is therefore internally closed at variational and perturbative
+level. The remaining extensions are external/completion-level items:
+(1) gauge-independent BRST/Faddeev--Popov closure of the perturbative
+ gauge-fixing sector,
+(2) fundamental UV completion beyond the operational tested cutoff, and
+(3) full observational inference in realistic cosmological histories.
 
-These results suggest that the observed late-time cosmic acceleration may reflect
-a global geometric property of the spacetime foliation defining the present---a
-resistance to staticity enforced at the cosmological horizon---rather than
-requiring the introduction of an additional dynamical dark energy degree of freedom.
-
-
+These results support the interpretation of late-time acceleration as a global
+geometric property of foliation structure, rather than as a separate local dark
+energy degree of freedom.
 
 % BIBLIOGRAFIA
 \sloppy  
@@ -789,3 +914,11 @@ requiring the introduction of an additional dynamical dark energy degree of free
 \bibliography{refs}       % Chiama il file refs.bib
 
 \end{document}
+
+
+
+
+
+
+
+

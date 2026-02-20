@@ -1,0 +1,99 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Wolfram 14.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       154,          7]
+NotebookDataLength[      2905,         90]
+NotebookOptionsPosition[      2178,         73]
+NotebookOutlinePosition[      2492,         87]
+CellTagsIndexPosition[      2449,         84]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell["04 - BH Non-Switches-Off Selection (IR Scaling Test)", "Title",ExpressionUUID->"78d60532-888b-4371-b185-646c3aa01f31"],
+
+Cell["\<\
+Objective: validate that BH contribution to Q is IR-suppressed and decreases \
+as cosmic domain grows (H -> H/2).\
+\>", "Text",ExpressionUUID->"13ddf925-b249-4432-8b16-eea18efc6cfc"],
+
+Cell[BoxData[
+ TagBox[
+  RowBox[{
+   RowBox[{"DTheta", "[", 
+    RowBox[{"M_", ",", "H_", ",", "z2_"}], "]"}], "\[Equal]", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"r", ">", "0"}], "|", 
+     RowBox[{
+      RowBox[{"f", "[", 
+       RowBox[{"r", ",", "M", ",", "H"}], "]"}], "\[GreaterEqual]", "z2"}]}], 
+    "}"}]}],
+  HoldForm]], "Input",ExpressionUUID->"4d7957bc-2963-46d7-89cc-72edd93c2a9d"],
+
+Cell[BoxData[
+ TagBox[
+  RowBox[{
+   RowBox[{"Q", "[", 
+    RowBox[{"M_", ",", "H_"}], "]"}], "\[Equal]", 
+   FractionBox[
+    RowBox[{"I1", "[", 
+     RowBox[{"M", ",", "H"}], "]"}], 
+    RowBox[{"I0", "[", 
+     RowBox[{"M", ",", "H"}], "]"}]]}],
+  HoldForm]], "Input",ExpressionUUID->"4c6e8c76-6e27-48b1-9f1b-fd06b9b858ad"],
+
+Cell[BoxData[
+ TagBox[
+  RowBox[{
+   RowBox[{"deltaQ", "[", "H_", "]"}], "\[Equal]", 
+   RowBox[{
+    RowBox[{"Q", "[", 
+     RowBox[{"M", ",", "H"}], "]"}], "-", 
+    RowBox[{"Q", "[", 
+     RowBox[{"0", ",", "H"}], "]"}]}]}],
+  HoldForm]], "Input",ExpressionUUID->"45d2e6f7-dd18-483c-823a-1d687c1fd25e"],
+
+Cell[BoxData[
+ TagBox[
+  RowBox[{"testIRRatio", "\[Equal]", 
+   FractionBox[
+    RowBox[{"deltaQ", "[", 
+     FractionBox["H", "2"], "]"}], 
+    RowBox[{"deltaQ", "[", "H", "]"}]]}],
+  HoldForm]], "Input",ExpressionUUID->"067b268b-8ca4-4351-ac71-62e1f1d91a5d"]
+},
+FrontEndVersion->"14.3 for Linux x86 (64-bit) (July 8, 2025)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"16265b3e-d4d9-4a48-9b54-e67fdfb61732"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[554, 20, 124, 0, 70, "Title",ExpressionUUID->"78d60532-888b-4371-b185-646c3aa01f31"],
+Cell[681, 22, 192, 3, 70, "Text",ExpressionUUID->"13ddf925-b249-4432-8b16-eea18efc6cfc"],
+Cell[876, 27, 398, 12, 70, "Input",ExpressionUUID->"4d7957bc-2963-46d7-89cc-72edd93c2a9d"],
+Cell[1277, 41, 326, 10, 70, "Input",ExpressionUUID->"4c6e8c76-6e27-48b1-9f1b-fd06b9b858ad"],
+Cell[1606, 53, 305, 9, 70, "Input",ExpressionUUID->"45d2e6f7-dd18-483c-823a-1d687c1fd25e"],
+Cell[1914, 64, 260, 7, 70, "Input",ExpressionUUID->"067b268b-8ca4-4351-ac71-62e1f1d91a5d"]
+}
+]
+*)
+
+(* End of internal cache information *)

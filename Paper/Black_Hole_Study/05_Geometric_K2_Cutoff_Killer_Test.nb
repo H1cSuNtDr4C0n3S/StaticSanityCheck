@@ -1,0 +1,127 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Wolfram 14.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       154,          7]
+NotebookDataLength[      3794,        118]
+NotebookOptionsPosition[      2973,        100]
+NotebookOutlinePosition[      3287,        114]
+CellTagsIndexPosition[      3244,        111]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell["05 - Geometric K2 Cutoff Killer Test", "Title",ExpressionUUID->"705e140b-e3dc-4fa4-a34f-def2edaf7401"],
+
+Cell["\<\
+Replace K2toy with geometric K2 from crossing foliation T in Kottler and \
+rerun the same cutoff no-go logic.\
+\>", "Text",ExpressionUUID->"eb155970-dade-4870-84c7-5c7e1c5c1202"],
+
+Cell[BoxData[
+ TagBox[
+  RowBox[{
+   RowBox[{"Theta", "\[Equal]", "T", "\[Equal]", 
+    RowBox[{"t", "+", 
+     RowBox[{"g", "[", "r", "]"}]}]}], "&&", 
+   RowBox[{
+    RowBox[{
+     SuperscriptBox["g", "\[Prime]",
+      MultilineFunction->None], "[", "r", "]"}], "\[Equal]", 
+    FractionBox[
+     SqrtBox[
+      RowBox[{"1", "-", 
+       RowBox[{"f", "[", 
+        RowBox[{"r", ",", "M", ",", "H"}], "]"}]}]], 
+     RowBox[{"f", "[", 
+      RowBox[{"r", ",", "M", ",", "H"}], "]"}]]}]}],
+  HoldForm]], "Input",ExpressionUUID->"c4069ba9-e59b-4d21-a250-976a4f4e1625"],
+
+Cell[BoxData[
+ TagBox[
+  RowBox[{
+   RowBox[{"K2geom", "[", "r_", "]"}], "\[Equal]", 
+   RowBox[{"KijKij", "[", 
+    RowBox[{
+     RowBox[{"gamma", " ", "T"}], ",", 
+     RowBox[{"beta", " ", "T"}]}], "]"}], "\[Equal]", 
+   RowBox[{
+    SuperscriptBox[
+     RowBox[{
+      SuperscriptBox["v", "\[Prime]",
+       MultilineFunction->None], "[", "r", "]"}], "2"], "+", 
+    RowBox[{"2", " ", 
+     SuperscriptBox[
+      RowBox[{"(", 
+       FractionBox[
+        RowBox[{"v", "[", "r", "]"}], "r"], ")"}], "2"]}]}]}],
+  HoldForm]], "Input",ExpressionUUID->"cf7f3bbd-cf7e-4546-822a-22edf85704f8"],
+
+Cell[BoxData[
+ TagBox[
+  RowBox[{
+   RowBox[{"v", "[", "r_", "]"}], "\[Equal]", 
+   SqrtBox[
+    RowBox[{
+     FractionBox[
+      RowBox[{"2", " ", "M"}], "r"], "+", 
+     RowBox[{
+      SuperscriptBox["H", "2"], " ", 
+      SuperscriptBox["r", "2"]}]}]]}],
+  HoldForm]], "Input",ExpressionUUID->"6a198f45-4ad0-455d-a096-d69df537a948"],
+
+Cell[BoxData[
+ TagBox[
+  RowBox[{
+   RowBox[{
+    RowBox[{"Q", "[", "rmin", "]"}], "\[Equal]", 
+    FractionBox[
+     RowBox[{"I1", "[", "rmin", "]"}], 
+     RowBox[{"I0", "[", "rmin", "]"}]]}], "&&", 
+   RowBox[{"r", " ", 
+    RowBox[{"in", "[", 
+     RowBox[{"rmin", ",", "rout"}], "]"}]}]}],
+  HoldForm]], "Input",ExpressionUUID->"644214ab-b48b-46a3-ad18-548f0c902278"],
+
+Cell[BoxData[
+ TagBox[
+  RowBox[{
+  "killerRule", 
+   "\[Equal]", "\"\<if Q does not converge as rmin -> 0 then geometric NO-GO \
+in crossing scenario\>\""}],
+  HoldForm]], "Input",ExpressionUUID->"c11ce8f7-0506-471a-bbac-3cf9de28d6eb"]
+},
+FrontEndVersion->"14.3 for Linux x86 (64-bit) (July 8, 2025)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"1781bd74-f961-48f1-9fa9-792962f33389"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[554, 20, 108, 0, 70, "Title",ExpressionUUID->"705e140b-e3dc-4fa4-a34f-def2edaf7401"],
+Cell[665, 22, 188, 3, 70, "Text",ExpressionUUID->"eb155970-dade-4870-84c7-5c7e1c5c1202"],
+Cell[856, 27, 567, 17, 70, "Input",ExpressionUUID->"c4069ba9-e59b-4d21-a250-976a4f4e1625"],
+Cell[1426, 46, 591, 18, 70, "Input",ExpressionUUID->"cf7f3bbd-cf7e-4546-822a-22edf85704f8"],
+Cell[2020, 66, 335, 11, 70, "Input",ExpressionUUID->"6a198f45-4ad0-455d-a096-d69df537a948"],
+Cell[2358, 79, 372, 11, 70, "Input",ExpressionUUID->"644214ab-b48b-46a3-ad18-548f0c902278"],
+Cell[2733, 92, 236, 6, 70, "Input",ExpressionUUID->"c11ce8f7-0506-471a-bbac-3cf9de28d6eb"]
+}
+]
+*)
+
+(* End of internal cache information *)

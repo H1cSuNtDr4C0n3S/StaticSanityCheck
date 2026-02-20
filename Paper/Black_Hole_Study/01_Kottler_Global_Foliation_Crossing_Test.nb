@@ -1,0 +1,123 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Wolfram 14.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       154,          7]
+NotebookDataLength[      3753,        114]
+NotebookOptionsPosition[      2932,         96]
+NotebookOutlinePosition[      3246,        110]
+CellTagsIndexPosition[      3203,        107]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell["01 - Kottler Global Foliation: Crossing vs Asymptotic Stall", "Title",ExpressionUUID->"11cfe22f-90af-4c90-a657-5fc7940e8161"],
+
+Cell["\<\
+Operational test for question 2: in Schwarzschild-de Sitter, does a regular \
+global foliation Theta cross horizons or stall at them?\
+\>", "Text",ExpressionUUID->"ae03c992-cfd5-4d5e-af3c-c3adc1173fe2"],
+
+Cell[BoxData[
+ TagBox[
+  RowBox[{
+   RowBox[{"f", "[", 
+    RowBox[{"r_", ",", "M_", ",", "H_"}], "]"}], ":=", 
+   RowBox[{"1", "-", 
+    FractionBox[
+     RowBox[{"2", " ", "M"}], "r"], "-", 
+    RowBox[{
+     SuperscriptBox["H", "2"], " ", 
+     SuperscriptBox["r", "2"]}]}]}],
+  HoldForm]], "Input",ExpressionUUID->"c0eb5a4a-41b2-42f8-aaa5-e7d03a4995df"],
+
+Cell[BoxData[
+ TagBox[
+  RowBox[{
+   RowBox[{"Theta", "\[Equal]", "T", "\[Equal]", 
+    RowBox[{"t", "+", 
+     RowBox[{"g", "[", "r", "]"}]}]}], "&&", 
+   RowBox[{
+    RowBox[{
+     SuperscriptBox["g", "\[Prime]",
+      MultilineFunction->None], "[", "r", "]"}], "\[Equal]", 
+    FractionBox[
+     SqrtBox[
+      RowBox[{"1", "-", 
+       RowBox[{"f", "[", 
+        RowBox[{"r", ",", "M", ",", "H"}], "]"}]}]], 
+     RowBox[{"f", "[", 
+      RowBox[{"r", ",", "M", ",", "H"}], "]"}]]}]}],
+  HoldForm]], "Input",ExpressionUUID->"60f8759d-58cb-4aac-a496-4d3b2ecab199"],
+
+Cell[BoxData[
+ TagBox[
+  RowBox[{"XTheta", "\[Equal]", 
+   RowBox[{"-", 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{"gInv", "[", 
+       RowBox[{"mu", ",", "nu"}], "]"}], " ", 
+      RowBox[{
+       SubscriptBox["\[PartialD]", 
+        RowBox[{"x", "[", "mu", "]"}]], "Theta"}], " ", 
+      RowBox[{
+       SubscriptBox["\[PartialD]", 
+        RowBox[{"x", "[", "nu", "]"}]], "Theta"}]}], ")"}]}], "\[Equal]", 
+   "1"}],
+  HoldForm]], "Input",ExpressionUUID->"72b1189b-321c-4cb1-8ea7-faaff4229c1a"],
+
+Cell[BoxData[
+ TagBox[
+  RowBox[{"ds2TR", "\[Equal]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"-", "f"}], " ", 
+     SuperscriptBox["dT", "2"]}], "+", 
+    RowBox[{"2", " ", 
+     SqrtBox[
+      RowBox[{"1", "-", "f"}]], " ", "dT", " ", "dr"}], "+", 
+    SuperscriptBox["dr", "2"], "+", 
+    RowBox[{
+     SuperscriptBox["r", "2"], " ", "dOmega2"}]}]}],
+  HoldForm]], "Input",ExpressionUUID->"cb7367dd-004e-412b-b8bc-015fb5c65995"],
+
+Cell[BoxData[
+ TagBox[
+  RowBox[{"behavior", "\[Equal]", "\"\<A_crossing\>\""}],
+  HoldForm]], "Input",ExpressionUUID->"c5214e46-a409-4fb9-9b04-05e0a8e1d1a7"]
+},
+FrontEndVersion->"14.3 for Linux x86 (64-bit) (July 8, 2025)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"74766fa5-ace0-4c11-a882-2afd6a32b5cc"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[554, 20, 131, 0, 70, "Title",ExpressionUUID->"11cfe22f-90af-4c90-a657-5fc7940e8161"],
+Cell[688, 22, 212, 3, 70, "Text",ExpressionUUID->"ae03c992-cfd5-4d5e-af3c-c3adc1173fe2"],
+Cell[903, 27, 357, 11, 70, "Input",ExpressionUUID->"c0eb5a4a-41b2-42f8-aaa5-e7d03a4995df"],
+Cell[1263, 40, 567, 17, 70, "Input",ExpressionUUID->"60f8759d-58cb-4aac-a496-4d3b2ecab199"],
+Cell[1833, 59, 501, 15, 70, "Input",ExpressionUUID->"72b1189b-321c-4cb1-8ea7-faaff4229c1a"],
+Cell[2337, 76, 430, 13, 70, "Input",ExpressionUUID->"cb7367dd-004e-412b-b8bc-015fb5c65995"],
+Cell[2770, 91, 158, 3, 70, "Input",ExpressionUUID->"c5214e46-a409-4fb9-9b04-05e0a8e1d1a7"]
+}
+]
+*)
+
+(* End of internal cache information *)

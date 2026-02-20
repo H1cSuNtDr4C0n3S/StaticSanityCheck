@@ -1,0 +1,38 @@
+Notebook: 01_Kottler_Global_Foliation_Crossing_Test.nb
+m0 = 1
+h0 = 1/100
+xThetaRaw = 1
+gTrRaw = Sqrt[(2*mm)/rr + hh^2*rr^2]
+gRRRaw = 1
+det2DRaw = -1
+roots = {2.0008009615388216027636345889088526375530714636437958135679`40., 98.9845863754293001836448446111994308703335694781763102673993`40.}
+rbh = 2.0008009615388216027636345889088526375530714636437958135679`40.
+rc = 98.9845863754293001836448446111994308703335694781763102673993`40.
+gTrBH = 1.`40.
+gTrC = 1.`40.
+detBH = -1.`39.698796182164095
+detC = -1.`39.402349817651285
+vPlusBH = 0``40.30085617349206
+vMinusBH = -2.`40.
+vPlusC = 0``40.00440980897925
+vMinusC = -2.`40.
+xStaticInside = -4.003910947722923
+xStaticMid = 1.4175568146949386892736872087639196536422733272301807580076`40.
+xStaticOutside = -2.3378567783682915
+xThetaInside = 0.9999999999999991
+xThetaMid = 1.0000000000000000000000000000000000000000000000000000000002`39.543789298653884
+xThetaOutside = 1.
+nearSlopeLeft = 20031.56494155056512658419168000225616368974`30.
+nearSlopeRight = 20032.56975406399239172915688483948886856727`30.
+checkA(XTheta=1) = True
+checkB(gTr form) = True
+checkC(gRR=1) = True
+checkD(det2D=-1) = True
+checkE(two horizons) = True
+checkF(metric regular at horizons) = True
+checkG(null slopes finite at horizons) = True
+checkH(static foliation not global) = True
+checkI(PG foliation timelike across regions) = True
+checkJ(static-time asymptotic behavior near horizon) = True
+behavior = "A_crossing"
+check = True

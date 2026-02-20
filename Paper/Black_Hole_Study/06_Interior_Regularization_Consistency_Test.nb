@@ -1,0 +1,107 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Wolfram 14.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       154,          7]
+NotebookDataLength[      3131,         98]
+NotebookOptionsPosition[      2403,         81]
+NotebookOutlinePosition[      2717,         95]
+CellTagsIndexPosition[      2674,         92]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell["06 - Interior Regularization Consistency Test", "Title",ExpressionUUID->"af72363c-653c-4363-851c-2c51b0f7f1a0"],
+
+Cell["\<\
+Implement interior regularization (soft core) and test: (i) Q(rmin) converges \
+as rmin->0, (ii) BH IR scaling remains volume-suppressed.\
+\>", "Text",ExpressionUUID->"e7d80cbd-bb3f-49e2-9911-13cc71593c3b"],
+
+Cell[BoxData[
+ TagBox[
+  RowBox[{
+   RowBox[{"vReg", "[", "r_", "]"}], "\[Equal]", 
+   SqrtBox[
+    RowBox[{
+     FractionBox[
+      RowBox[{"2", " ", "M"}], 
+      SqrtBox[
+       RowBox[{
+        SuperscriptBox["r", "2"], "+", 
+        SuperscriptBox["aReg", "2"]}]]], "+", 
+     RowBox[{
+      SuperscriptBox["H", "2"], " ", 
+      SuperscriptBox["r", "2"]}]}]]}],
+  HoldForm]], "Input",ExpressionUUID->"72f9bd70-28fe-4139-b2c0-aa2fc6c55cd9"],
+
+Cell[BoxData[
+ TagBox[
+  RowBox[{
+   RowBox[{"K2reg", "[", "r_", "]"}], "\[Equal]", 
+   RowBox[{
+    SuperscriptBox[
+     RowBox[{
+      SuperscriptBox["vReg", "\[Prime]",
+       MultilineFunction->None], "[", "r", "]"}], "2"], "+", 
+    RowBox[{"2", " ", 
+     SuperscriptBox[
+      RowBox[{"(", 
+       FractionBox[
+        RowBox[{"vReg", "[", "r", "]"}], "r"], ")"}], "2"]}]}]}],
+  HoldForm]], "Input",ExpressionUUID->"125867ac-e5ac-47b7-9ee4-f2a94a080143"],
+
+Cell[BoxData[
+ TagBox[
+  RowBox[{
+   RowBox[{
+    RowBox[{"Qreg", "[", "rmin", "]"}], "\[Equal]", 
+    FractionBox[
+     RowBox[{"I1reg", "[", "rmin", "]"}], 
+     RowBox[{"I0", "[", "rmin", "]"}]]}], "&&", 
+   RowBox[{"r", " ", 
+    RowBox[{"in", "[", 
+     RowBox[{"rmin", ",", "rout"}], "]"}]}]}],
+  HoldForm]], "Input",ExpressionUUID->"81bef74b-1cff-400f-b002-623d8166332c"],
+
+Cell[BoxData[
+ TagBox[
+  RowBox[{
+  "validation", 
+   "\[Equal]", "\"\<convergent core (n_eff < 3) + preserved IR \
+suppression\>\""}],
+  HoldForm]], "Input",ExpressionUUID->"421ed651-1d83-4c43-84fa-53e5db82c67d"]
+},
+FrontEndVersion->"14.3 for Linux x86 (64-bit) (July 8, 2025)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"1781bd74-f961-48f1-9fa9-792962f33389"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[554, 20, 117, 0, 70, "Title",ExpressionUUID->"af72363c-653c-4363-851c-2c51b0f7f1a0"],
+Cell[674, 22, 216, 3, 70, "Text",ExpressionUUID->"e7d80cbd-bb3f-49e2-9911-13cc71593c3b"],
+Cell[893, 27, 445, 15, 70, "Input",ExpressionUUID->"72f9bd70-28fe-4139-b2c0-aa2fc6c55cd9"],
+Cell[1341, 44, 461, 14, 70, "Input",ExpressionUUID->"125867ac-e5ac-47b7-9ee4-f2a94a080143"],
+Cell[1805, 60, 378, 11, 70, "Input",ExpressionUUID->"81bef74b-1cff-400f-b002-623d8166332c"],
+Cell[2186, 73, 213, 6, 70, "Input",ExpressionUUID->"421ed651-1d83-4c43-84fa-53e5db82c67d"]
+}
+]
+*)
+
+(* End of internal cache information *)

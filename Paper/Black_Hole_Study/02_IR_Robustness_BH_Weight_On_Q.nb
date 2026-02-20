@@ -1,0 +1,108 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Wolfram 14.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       154,          7]
+NotebookDataLength[      3324,         99]
+NotebookOptionsPosition[      2596,         82]
+NotebookOutlinePosition[      2910,         96]
+CellTagsIndexPosition[      2867,         93]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell["02 - IR Robustness: BH Weight on Q=I1/I0", "Title",ExpressionUUID->"69748d6a-1810-4bf5-a417-5b44f6e00cdc"],
+
+Cell["\<\
+Toy test: de Sitter background plus local BH defect. Goal: quantify when \
+deltaQ stays volume-suppressed and when non-integrable core behavior can make \
+it O(1).\
+\>", "Text",ExpressionUUID->"65252316-4e7c-40b8-8f55-7f1cccccf75b"],
+
+Cell[BoxData[
+ TagBox[
+  RowBox[{
+   RowBox[{"Q", "\[Equal]", 
+    FractionBox["I1", "I0"]}], "&&", 
+   RowBox[{"I1", "\[Equal]", 
+    RowBox[{"I1bg", "+", "deltaI1BH"}]}], "&&", 
+   RowBox[{"I0", "\[Equal]", "I0cosmo"}]}],
+  HoldForm]], "Input",ExpressionUUID->"00972bc2-3415-4157-8dd4-863f4549b8ac"],
+
+Cell[BoxData[
+ TagBox[
+  RowBox[{
+   RowBox[{"deltaI1BH", "[", "p", "]"}], "\[Equal]", 
+   RowBox[{"4", " ", "\[Pi]", " ", "a", " ", "K2bg", " ", 
+    SuperscriptBox["rs", "p"], " ", 
+    RowBox[{
+     SubsuperscriptBox["\[Integral]", "reps", "rMatch"], 
+     RowBox[{
+      SuperscriptBox["r", 
+       RowBox[{"2", "-", "p"}]], 
+      RowBox[{"\[DifferentialD]", "r"}]}]}]}]}],
+  HoldForm]], "Input",ExpressionUUID->"d6bc06b1-dc8f-4309-93f8-6f837dc40a2a"],
+
+Cell[BoxData[
+ TagBox[
+  RowBox[{
+   RowBox[{"deltaQ", "\[Equal]", 
+    FractionBox["deltaI1BH", "I0"]}], "&&", 
+   RowBox[{"I0", "\[Equal]", 
+    RowBox[{
+     FractionBox["1", "3"], " ", 
+     RowBox[{"(", 
+      RowBox[{"4", " ", "\[Pi]"}], ")"}], " ", 
+     RowBox[{"(", 
+      RowBox[{
+       SuperscriptBox["Rc", "3"], "-", 
+       SuperscriptBox["reps", "3"]}], ")"}]}]}]}],
+  HoldForm]], "Input",ExpressionUUID->"ae1f9218-ec57-4f3d-8db0-894b51c4c704"],
+
+Cell[BoxData[
+ RowBox[{"HoldForm", "[", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"p", "<", "3"}], "\[Rule]", 
+    RowBox[{"integrable", " ", 
+     RowBox[{"(", 
+      RowBox[{"finite", " ", "core", " ", "contribution"}], ")"}]}]}], ",", 
+   RowBox[{
+    RowBox[{"p", ">", "3"}], "\[Rule]", 
+    RowBox[{"non", "-", 
+     RowBox[{"integrable", " ", "core", " ", "sensitivity"}]}]}]}], 
+  "]"}]], "Input",ExpressionUUID->"e2ca9e0a-cd1f-4908-8b88-150cfca9246b"]
+},
+FrontEndVersion->"14.3 for Linux x86 (64-bit) (July 8, 2025)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"7c526f03-48f7-443e-bd70-d48262bfc942"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[554, 20, 112, 0, 70, "Title",ExpressionUUID->"69748d6a-1810-4bf5-a417-5b44f6e00cdc"],
+Cell[669, 22, 242, 4, 70, "Text",ExpressionUUID->"65252316-4e7c-40b8-8f55-7f1cccccf75b"],
+Cell[914, 28, 301, 8, 70, "Input",ExpressionUUID->"00972bc2-3415-4157-8dd4-863f4549b8ac"],
+Cell[1218, 38, 456, 12, 70, "Input",ExpressionUUID->"d6bc06b1-dc8f-4309-93f8-6f837dc40a2a"],
+Cell[1677, 52, 459, 14, 70, "Input",ExpressionUUID->"ae1f9218-ec57-4f3d-8db0-894b51c4c704"],
+Cell[2139, 68, 453, 12, 70, "Input",ExpressionUUID->"e2ca9e0a-cd1f-4908-8b88-150cfca9246b"]
+}
+]
+*)
+
+(* End of internal cache information *)

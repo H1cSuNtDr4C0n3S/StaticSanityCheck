@@ -1,0 +1,130 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Wolfram 14.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       154,          7]
+NotebookDataLength[      3901,        121]
+NotebookOptionsPosition[      3080,        103]
+NotebookOutlinePosition[      3394,        117]
+CellTagsIndexPosition[      3351,        114]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell["00 - DTheta Domain in Schwarzschild-de Sitter", "Title",ExpressionUUID->"39cbb32d-0ccf-483b-97e4-cdbc6b8df0d6"],
+
+Cell["\<\
+Question zero: define DTheta with an operational redshift cutoff and test \
+unambiguous boundary shape derivative under BH-mass deformation.\
+\>", "Text",ExpressionUUID->"09de83f1-8f7d-4b26-9c3d-c5ca1e330602"],
+
+Cell[BoxData[
+ TagBox[
+  RowBox[{
+   RowBox[{"f", "[", 
+    RowBox[{"r_", ",", "M_", ",", "H_"}], "]"}], ":=", 
+   RowBox[{"1", "-", 
+    FractionBox[
+     RowBox[{"2", " ", "M"}], "r"], "-", 
+    RowBox[{
+     SuperscriptBox["H", "2"], " ", 
+     SuperscriptBox["r", "2"]}]}]}],
+  HoldForm]], "Input",ExpressionUUID->"f5b25fab-e390-4606-8333-2afba98cf0f3"],
+
+Cell[BoxData[
+ TagBox[
+  RowBox[{
+   RowBox[{"DTheta", "[", 
+    RowBox[{"M_", ",", "H_", ",", "z2_"}], "]"}], "\[Equal]", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"r", ">", "0"}], "|", 
+     RowBox[{
+      RowBox[{"f", "[", 
+       RowBox[{"r", ",", "M", ",", "H"}], "]"}], "\[GreaterEqual]", "z2"}]}], 
+    "}"}]}],
+  HoldForm]], "Input",ExpressionUUID->"e32bbad0-fc33-4438-bddf-e9e49f3acfc2"],
+
+Cell[BoxData[
+ TagBox[
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"rIn", ",", "rOut"}], "}"}], "/.", "\[VeryThinSpace]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{
+      RowBox[{"f", "[", 
+       RowBox[{"r", ",", "M", ",", "H"}], "]"}], "-", "z2"}], "\[Equal]", 
+     "0"}], "&&", 
+    RowBox[{"rIn", "<", "rOut"}]}]}],
+  HoldForm]], "Input",ExpressionUUID->"c15495e8-935a-49dc-b553-7659795addd6"],
+
+Cell[BoxData[
+ TagBox[
+  RowBox[{
+   RowBox[{"drdM", "[", "r_", "]"}], "\[Equal]", 
+   RowBox[{"-", 
+    FractionBox[
+     RowBox[{
+      SubscriptBox["\[PartialD]", "M"], 
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{"f", "[", 
+         RowBox[{"r", ",", "M", ",", "H"}], "]"}], "-", "z2"}], ")"}]}], 
+     RowBox[{
+      SubscriptBox["\[PartialD]", "r"], 
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{"f", "[", 
+         RowBox[{"r", ",", "M", ",", "H"}], "]"}], "-", "z2"}], ")"}]}]]}], "\[Equal]", 
+   FractionBox["r", 
+    RowBox[{"M", "-", 
+     RowBox[{
+      SuperscriptBox["H", "2"], " ", 
+      SuperscriptBox["r", "3"]}]}]]}],
+  HoldForm]], "Input",ExpressionUUID->"12a86853-1d17-4eff-b4bf-062503b1c6f5"],
+
+Cell[BoxData[
+ TagBox[
+  RowBox[{"dI0dM", "\[Equal]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"mu", "[", "rOut", "]"}], " ", "drOutdM"}], "-", 
+    RowBox[{
+     RowBox[{"mu", "[", "rIn", "]"}], " ", "drIndM"}]}]}],
+  HoldForm]], "Input",ExpressionUUID->"f3bb05af-af54-4895-8616-9d3d8585b019"]
+},
+FrontEndVersion->"14.3 for Linux x86 (64-bit) (July 8, 2025)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"66f610bd-1e99-4033-b22c-32bac2f9df85"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[554, 20, 117, 0, 70, "Title",ExpressionUUID->"39cbb32d-0ccf-483b-97e4-cdbc6b8df0d6"],
+Cell[674, 22, 219, 3, 70, "Text",ExpressionUUID->"09de83f1-8f7d-4b26-9c3d-c5ca1e330602"],
+Cell[896, 27, 357, 11, 70, "Input",ExpressionUUID->"f5b25fab-e390-4606-8333-2afba98cf0f3"],
+Cell[1256, 40, 398, 12, 70, "Input",ExpressionUUID->"e32bbad0-fc33-4438-bddf-e9e49f3acfc2"],
+Cell[1657, 54, 392, 12, 70, "Input",ExpressionUUID->"c15495e8-935a-49dc-b553-7659795addd6"],
+Cell[2052, 68, 729, 23, 70, "Input",ExpressionUUID->"12a86853-1d17-4eff-b4bf-062503b1c6f5"],
+Cell[2784, 93, 292, 8, 70, "Input",ExpressionUUID->"f3bb05af-af54-4895-8616-9d3d8585b019"]
+}
+]
+*)
+
+(* End of internal cache information *)

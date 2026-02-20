@@ -1,0 +1,137 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Wolfram 14.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       154,          7]
+NotebookDataLength[      4217,        128]
+NotebookOptionsPosition[      3303,        109]
+NotebookOutlinePosition[      3617,        123]
+CellTagsIndexPosition[      3574,        120]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell["03 - No-Go on Singular Interiors (Cutoff Test)", "Title",ExpressionUUID->"dc6b7f66-22e7-4d8e-b59a-f0b97ea5bb94"],
+
+Cell["\<\
+Objective: in crossing foliation, test whether singular core behavior is \
+compatible with the constraint on Q=I1/I0 as rmin -> 0.\
+\>", "Text",ExpressionUUID->"49f6de29-567e-4a9a-b74d-fa601b6b4a69"],
+
+Cell[BoxData[
+ TagBox[
+  RowBox[{
+   RowBox[{"Theta", "\[Equal]", "T", "\[Equal]", 
+    RowBox[{"t", "+", 
+     RowBox[{"g", "[", "r", "]"}]}]}], "&&", 
+   RowBox[{
+    RowBox[{
+     SuperscriptBox["g", "\[Prime]",
+      MultilineFunction->None], "[", "r", "]"}], "\[Equal]", 
+    FractionBox[
+     SqrtBox[
+      RowBox[{"1", "-", 
+       RowBox[{"f", "[", 
+        RowBox[{"r", ",", "M", ",", "H"}], "]"}]}]], 
+     RowBox[{"f", "[", 
+      RowBox[{"r", ",", "M", ",", "H"}], "]"}]]}]}],
+  HoldForm]], "Input",ExpressionUUID->"6a2a8f88-a3a7-4e26-a59a-6bd3e1a5b10f"],
+
+Cell[BoxData[
+ TagBox[
+  RowBox[{
+   RowBox[{"sqrtGamma", "\[Equal]", 
+    RowBox[{
+     SuperscriptBox["r", "2"], " ", 
+     RowBox[{"Sin", "[", "th", "]"}]}]}], "&&", 
+   RowBox[{
+    RowBox[{"I0", "[", "rmin", "]"}], "\[Equal]", 
+    RowBox[{
+     FractionBox["1", "3"], " ", 
+     RowBox[{"(", 
+      RowBox[{"4", " ", "\[Pi]"}], ")"}], " ", 
+     RowBox[{"(", 
+      RowBox[{
+       SuperscriptBox["rout", "3"], "-", 
+       SuperscriptBox["rmin", "3"]}], ")"}]}]}]}],
+  HoldForm]], "Input",ExpressionUUID->"4f8ad117-02a1-4fb5-b785-7ee72b4da33c"],
+
+Cell[BoxData[
+ TagBox[
+  RowBox[{
+   RowBox[{"K2toy", "[", 
+    RowBox[{"r_", ",", "n_"}], "]"}], "\[Equal]", 
+   RowBox[{"K2bg", "+", 
+    RowBox[{"A", " ", 
+     SuperscriptBox[
+      RowBox[{"(", 
+       FractionBox["rs", "r"], ")"}], "n"]}]}]}],
+  HoldForm]], "Input",ExpressionUUID->"b1e461a5-5928-477a-9dd5-10759dc667d4"],
+
+Cell[BoxData[
+ TagBox[
+  RowBox[{
+   RowBox[{"I1", "[", 
+    RowBox[{"n", ",", "rmin"}], "]"}], "\[Equal]", 
+   RowBox[{"4", " ", "\[Pi]", " ", 
+    RowBox[{
+     SubsuperscriptBox["\[Integral]", "rmin", "rout"], 
+     RowBox[{
+      RowBox[{
+       RowBox[{"K2toy", "[", 
+        RowBox[{"r", ",", "n"}], "]"}], " ", 
+       SuperscriptBox["r", "2"]}], 
+      RowBox[{"\[DifferentialD]", "r"}]}]}]}]}],
+  HoldForm]], "Input",ExpressionUUID->"71dc3d82-3d4d-4cec-a444-f007b4de6f86"],
+
+Cell[BoxData[
+ TagBox[
+  RowBox[{
+   RowBox[{"Q", "[", 
+    RowBox[{"n", ",", "rmin"}], "]"}], "\[Equal]", 
+   FractionBox[
+    RowBox[{"I1", "[", 
+     RowBox[{"n", ",", "rmin"}], "]"}], 
+    RowBox[{"I0", "[", "rmin", "]"}]]}],
+  HoldForm]], "Input",ExpressionUUID->"e57e78a6-f12f-4ae2-95c2-b95c70b31a13"],
+
+Cell[BoxData[
+ TagBox[
+  RowBox[{"rule", "\[Equal]", "\"\<integrable iff n < 3\>\""}],
+  HoldForm]], "Input",ExpressionUUID->"bff771d3-c7ce-48ee-b551-37b92503e1df"]
+},
+FrontEndVersion->"14.3 for Linux x86 (64-bit) (July 8, 2025)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"16265b3e-d4d9-4a48-9b54-e67fdfb61732"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[554, 20, 118, 0, 70, "Title",ExpressionUUID->"dc6b7f66-22e7-4d8e-b59a-f0b97ea5bb94"],
+Cell[675, 22, 209, 3, 70, "Text",ExpressionUUID->"49f6de29-567e-4a9a-b74d-fa601b6b4a69"],
+Cell[887, 27, 567, 17, 70, "Input",ExpressionUUID->"6a2a8f88-a3a7-4e26-a59a-6bd3e1a5b10f"],
+Cell[1457, 46, 551, 17, 70, "Input",ExpressionUUID->"4f8ad117-02a1-4fb5-b785-7ee72b4da33c"],
+Cell[2011, 65, 327, 10, 70, "Input",ExpressionUUID->"b1e461a5-5928-477a-9dd5-10759dc667d4"],
+Cell[2341, 77, 481, 14, 70, "Input",ExpressionUUID->"71dc3d82-3d4d-4cec-a444-f007b4de6f86"],
+Cell[2825, 93, 307, 9, 70, "Input",ExpressionUUID->"e57e78a6-f12f-4ae2-95c2-b95c70b31a13"],
+Cell[3135, 104, 164, 3, 70, "Input",ExpressionUUID->"bff771d3-c7ce-48ee-b551-37b92503e1df"]
+}
+]
+*)
+
+(* End of internal cache information *)
